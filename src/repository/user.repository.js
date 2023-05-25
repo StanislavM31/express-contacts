@@ -14,4 +14,17 @@ async function getFullDataDB(){
     return data
 }
 
-module.exports = {getAllDataDB, getFullDataDB}
+async function deleteByIdDB(id){
+    const client = await pool.connect();
+    const sql_delete = `delete from users_info WHERE id = $1`;
+    const data_deleted = (await client.query(sql_delete, [id])).rows;
+    console.log(data_deleted);
+    const sql = `SELECT name, surname , birth, city, age from users
+    INNER JOIN users_info on users.info_id = users_info.id`;
+    const data = (await client.query(sql)).rows;
+
+    return data
+}
+
+
+module.exports = {getAllDataDB, getFullDataDB, deleteByIdDB}

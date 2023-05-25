@@ -1,4 +1,4 @@
-const { getAllDataDB, getFullDataDB } = require("../repository/user.repository");
+const { getAllDataDB, getFullDataDB, deleteByIdDB } = require("../repository/user.repository");
 
 async function getAllData() {
   const data = await getAllDataDB();
@@ -16,4 +16,9 @@ async function getFullData(){
     return data_new;
 }
 
-module.exports = { getAllData, getFullData };
+async function deleteById(id){
+    const data = await deleteByIdDB(id);
+    return data;
+}
+
+module.exports = { getAllData, getFullData, deleteById };
