@@ -14,7 +14,6 @@ route.get('/', async (req, res) => {
 route.get('/data', async (req, res) => {
   try {
     const data = await getFullData();
-    console.log(data);
     res.send(data);
   } catch (error) {
     res.send(error.message);
@@ -54,7 +53,6 @@ route.get('/:id', isValidUserId, async (req, res) => {
   try {
     const { id } = req.params;
     const data = await getDataById(id);
-    console.log(data);
     res.send(data);
   } catch (error) {
     res.send('ошибка получения по id');
