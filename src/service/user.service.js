@@ -31,7 +31,7 @@ async function createData(name, surname, birth, city, age) {
 }
 async function updateDataById(id, name, surname, birth, city, age) {
   const data = await updateDataByIdDB(id, name, surname, birth, city, age);
-  if(!data) throw new Error ("id not found");
+  if(!data) throw new Error ("id not")
   return data;
 }
 async function getDataById(id) {
