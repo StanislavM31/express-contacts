@@ -34,11 +34,11 @@ async function deleteDataByIdDB(id) {
 
     const sql2 = `DELETE FROM users_info WHERE id = $1 RETURNING *`;
     const data2 = (await client.query(sql2, [id])).rows;
-    await client.query("ROLLBACK")
+    await client.query('ROLLBACK');
 
-    return { ...data1[0], ...data2[0] };//spread
+    return { ...data1[0], ...data2[0] }; //spread
   } catch (error) {
-    await client.query("ROLLBACK");
+    await client.query('ROLLBACK');
 
     return null;
   }
